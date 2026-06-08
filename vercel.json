@@ -1,14 +1,18 @@
 {
   "version": 2,
-  "rewrites": [
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/fam.py"
+      "src": "fam.py",
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": ["data.json"]
+      }
     }
   ],
-  "functions": {
-    "fam.py": {
-      "includeFiles": "data.json"
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "fam.py"
     }
-  }
+  ]
 }
